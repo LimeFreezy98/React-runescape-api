@@ -39,3 +39,23 @@
 .search-link:hover {
   background: #d7efe9;
 }
+
+.gallery { 
+  margin-top: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+
+.gallery-item {
+  text-align: center;
+}
+
+.gallery-thumb {
+  width: 100%;
+  border-radius: 6px;
+}

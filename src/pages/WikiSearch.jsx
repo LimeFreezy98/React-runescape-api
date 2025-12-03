@@ -4,14 +4,23 @@ import { Link } from "react-router-dom";
 // import { wikiSearch as fetchWikiSearch } from "../api/runescape";
 
 async function fetchWikiSearch(query) {
-    const url = `https://oldschool.runescape.wiki/api.php?action=query&list=search&srsearch=${encodeURIComponent(
-      query
-    )}&format=json&origin=*`;
+    const url =
+    `https://oldschool.runescape.wiki/api.php?action=query` +
+    `&generator=search` +
+    `&gsrsearch=${encodeURIComponent(query)}` +
+    `&gsrlimit=20` +
+    `&prop=pageimages|extracts` +
+    `&piprop=thumbnail` +
+    `&pithumbsize=200` +
+    `&exintro&explaintext` +
+    `&format=json&origin=*`;
+
   
     const res = await fetch(url);
     const data = await res.json();
   
-    return data?.query?.search || [];
+    return data?.query?.pages 
+    ? Object.values(data.query.pages) : [];
   }
 
 export default function WikiSearchPage() {
@@ -60,11 +69,24 @@ export default function WikiSearchPage() {
         {results.map((r) => (
           <li key={r.pageid} className="result">
             <Link to={`/article/${encodeURIComponent(r.title)}`}>
-              <strong>{r.title}</strong>
+                <div className="result-item">
+                {r.thumbnail?.source && (
+                  <img 
+                    src={r.thumbnail.source}
+                    alt={r.title}
+                    className="thumb"
+                    />  
+                )}
+
+                <div>
+                 <strong>{r.title}</strong>
+                  <p className="snippet">{r.extract} </p>
+                </div>
+               </div>
             </Link>
-            <p className="snippet">
+           
               {r.snippet?.replace(/<\/?span[^>]*>/g, "")}…
-            </p>
+            
           </li>
         ))}
       </ul>
