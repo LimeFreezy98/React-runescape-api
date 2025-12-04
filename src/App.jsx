@@ -5,6 +5,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import HomePage from "./pages/DashboardPage";
 import WikiSearch from "./pages/WikiSearch";
 import ArticleView from "./pages/ArticleView";
+import QuestPage from './pages/Questpage';
 
 
 import WikiSearchPage from "./pages/WikiSearch";
@@ -27,7 +28,7 @@ function App() {
           <Route path="/article/:title" element={<ArticleView />} />
 
           {/* Category pages (empty for now.) */}
-          <Route path="/quests" element={<div>Quests Page</div>} />
+          <Route path="/quests" element={<QuestPage />} />
           <Route path="/skills" element={<div>Skills Page</div>} />
           <Route path="/items" element={<div>Items Page</div>} />
           <Route path="/monsters" element={<div>Monsters Page</div>} />
