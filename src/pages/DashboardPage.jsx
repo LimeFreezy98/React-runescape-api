@@ -44,6 +44,22 @@ export default function HomePage() {
           <p>Lookup Events every seasonal or months. </p>
         </Link>
 
+        <Link to="/spells" className="category-card">
+          <h2>Spells</h2>
+          <p>Lookup  every spells. </p>
+        </Link>
+
+
+        <Link to="/gamemode" className="category-card">
+          <h2>Gamemode</h2>
+          <p>Lookup Events every gamemode exist. </p>
+        </Link>
+
+        <Link to="/Worldmap" className="category-card">
+          <h2>World Map</h2>
+          <p>Lookup interactive world map</p>
+        </Link>
+
       </div>
 
       <div style={{ marginTop: "40px", textAlign: "center" }}>
